@@ -12,7 +12,7 @@
     "availability": "API: ACTIVE"
   },
   "nexus_terminal": {
-    "efficiency": 100,
+    "efficiency": 98,
     "storage_drive": "OneDrive (1TB) Linked"
   },
   "projects": [
@@ -52,4 +52,5 @@
     { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
     { "url": "#", "icon": "fa-linkedin" }
   ]
+
 }
