@@ -50,9 +50,10 @@
   "socials": [
     { "url": "https://github.com/saazidhossain", "icon": "fa-github" },
     { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
-    { "url": "https://www.behance.net/আপনার_আইডি", "icon": "fa-behance" }, 
+    { "url": "https://www.behance.net/saazidhossain", "icon": "fa-behance" }, 
     { "url": "#", "icon": "fa-linkedin" }
   ]
 
 }
+
 
