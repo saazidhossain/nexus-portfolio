@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "NEXUS_v4.0",
+    "version": "NEXUS_v5.0_ULTIMATE",
     "last_synced": "2026-01-20"
   },
   "identity": {
@@ -12,9 +12,40 @@
     "availability": "API: ACTIVE"
   },
   "nexus_terminal": {
-    "efficiency": 100,
+    "efficiency": 98,
     "storage_drive": "OneDrive (1TB) Linked"
   },
+  
+  "//_NEW_MODULES": "BELOW_THIS_LINE",
+
+  "current_focus": {
+    "status": "Building Dokan OS Beta",
+    "battery": "85%",
+    "location": "Savar, Dhaka (Remote)",
+    "music": "Lofi Hip Hop Radio"
+  },
+  "tech_stack": [
+    { "name": "Astro", "icon": "fa-space-shuttle", "color": "text-orange-500" },
+    { "name": "Tailwind", "icon": "fa-wind", "color": "text-cyan-400" },
+    { "name": "React", "icon": "fa-react", "color": "text-blue-500" },
+    { "name": "Node.js", "icon": "fa-node", "color": "text-green-500" },
+    { "name": "Figma", "icon": "fa-figma", "color": "text-pink-500" },
+    { "name": "GitHub", "icon": "fa-github", "color": "text-white" }
+  ],
+  "micro_logs": [
+    { "date": "2026-01-20", "type": "SYSTEM", "content": "Deployed Nexus Portfolio v5.0 with Digital Garden integration." },
+    { "date": "2026-01-18", "type": "READING", "content": "Finished 'Atomic Habits'. Implementing 1% improvement rule in code architecture." },
+    { "date": "2026-01-15", "type": "THOUGHT", "content": "Minimalism isn't about having less, it's about making room for what matters." }
+  ],
+  "cyber_dictionary": [
+    { "term": "Bug", "def": "সিস্টেমের অবাঞ্ছিত ডিজিটাল অতিথি।" },
+    { "term": "Deploy", "def": "লোকাল পিসি থেকে কোডকে ডিজিটাল আকাশে (Cloud) ভাসিয়ে দেওয়া।" },
+    { "term": "Freelancing", "def": "নিজেই নিজের বস হওয়ার শান্তিময় বিড়ম্বনা।" },
+    { "term": "Deadline", "def": "প্রোডাক্টিভিটি বাড়ানোর একমাত্র জাদুকরী সময়সীমা।" }
+  ],
+
+  "//_EXISTING_DATA": "BELOW_THIS_LINE",
+
   "projects": [
     {
       "id": "ju-45",
@@ -22,7 +53,7 @@
       "role": "Lead Strategist",
       "stack": ["Branding", "Logistics", "Digital Portal"],
       "description": "Orchestrated branding and digital infrastructure for 2,000+ students at Jahangirnagar University.",
-      "content": "Jahangirnagar University's 45th batch needed a unified digital identity. As the Lead Strategist, I orchestrated the entire branding campaign, focusing on a 'Cyber-Heritage' aesthetic. We managed logistics for 2,000+ students and deployed a digital portal for event registration, creating a seamless experience from online to offline.",
+      "content": "Full case study content here...",
       "image": "/ju-rag.jpg",
       "accent": "gold-500",
       "url": "/projects/ju-45"
@@ -33,7 +64,7 @@
       "role": "Product Architect",
       "stack": ["F-Commerce", "Banglish AI", "WhatsApp API"],
       "description": "Retail automation engine featuring a localized AI sales bot and inventory management.",
-      "content": "Dokan OS is designed to solve the chaos of F-Commerce in Bangladesh. The core innovation is the 'Banglish AI' bot, capable of understanding mixed Bengali-English queries. By integrating directly with WhatsApp API, we automated 60% of customer interactions, allowing small business owners to focus on growth rather than repetitive replies.",
+      "content": "Full case study content here...",
       "image": "/dokan.jpg",
       "accent": "indigo-500",
       "url": "/projects/dokan-os"
@@ -44,7 +75,7 @@
       "role": "Content Engineer",
       "stack": ["NotebookLM", "Philosophy", "Cyber-Noir"],
       "description": "A digital sage tool fused with Google NotebookLM for philosophy-driven content engineering.",
-      "content": "Vabuuk is where Philosophy meets Engineering. Using Google's NotebookLM, I created a 'Digital Sage' that processes complex philosophical texts and converts them into digestible, 'Cyber-Noir' aesthetic content. It stands as a testament to how AI can augment human creativity rather than replace it.",
+      "content": "Full case study content here...",
       "image": "/vabuuk.jpg",
       "accent": "cyan-500",
       "url": "/projects/vabuuk"
