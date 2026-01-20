@@ -1,6 +1,6 @@
 {
   "meta": {
-    "version": "NEXUS_v3.0",
+    "version": "NEXUS_v4.0",
     "last_synced": "2026-01-20"
   },
   "identity": {
@@ -12,7 +12,7 @@
     "availability": "API: ACTIVE"
   },
   "nexus_terminal": {
-    "efficiency": 98,
+    "efficiency": 100,
     "storage_drive": "OneDrive (1TB) Linked"
   },
   "projects": [
@@ -22,9 +22,10 @@
       "role": "Lead Strategist",
       "stack": ["Branding", "Logistics", "Digital Portal"],
       "description": "Orchestrated branding and digital infrastructure for 2,000+ students at Jahangirnagar University.",
+      "content": "Jahangirnagar University's 45th batch needed a unified digital identity. As the Lead Strategist, I orchestrated the entire branding campaign, focusing on a 'Cyber-Heritage' aesthetic. We managed logistics for 2,000+ students and deployed a digital portal for event registration, creating a seamless experience from online to offline.",
       "image": "/ju-rag.jpg",
       "accent": "gold-500",
-      "url": "#"
+      "url": "/projects/ju-45"
     },
     {
       "id": "dokan-os",
@@ -32,9 +33,10 @@
       "role": "Product Architect",
       "stack": ["F-Commerce", "Banglish AI", "WhatsApp API"],
       "description": "Retail automation engine featuring a localized AI sales bot and inventory management.",
+      "content": "Dokan OS is designed to solve the chaos of F-Commerce in Bangladesh. The core innovation is the 'Banglish AI' bot, capable of understanding mixed Bengali-English queries. By integrating directly with WhatsApp API, we automated 60% of customer interactions, allowing small business owners to focus on growth rather than repetitive replies.",
       "image": "/dokan.jpg",
       "accent": "indigo-500",
-      "url": "#"
+      "url": "/projects/dokan-os"
     },
     {
       "id": "vabuuk",
@@ -42,18 +44,16 @@
       "role": "Content Engineer",
       "stack": ["NotebookLM", "Philosophy", "Cyber-Noir"],
       "description": "A digital sage tool fused with Google NotebookLM for philosophy-driven content engineering.",
+      "content": "Vabuuk is where Philosophy meets Engineering. Using Google's NotebookLM, I created a 'Digital Sage' that processes complex philosophical texts and converts them into digestible, 'Cyber-Noir' aesthetic content. It stands as a testament to how AI can augment human creativity rather than replace it.",
       "image": "/vabuuk.jpg",
       "accent": "cyan-500",
-      "url": "#"
+      "url": "/projects/vabuuk"
     }
   ],
   "socials": [
     { "url": "https://github.com/saazidhossain", "icon": "fa-github" },
     { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
-    { "url": "https://www.behance.net/saazidhossain", "icon": "fa-behance" }, 
+    { "url": "https://www.behance.net/saazidhossain", "icon": "fa-behance" },
     { "url": "#", "icon": "fa-linkedin" }
   ]
-
 }
-
-
