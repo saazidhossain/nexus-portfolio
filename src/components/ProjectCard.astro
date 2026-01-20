@@ -1,0 +1,33 @@
+---
+const { title, role, description, stack, image, accent, url } = Astro.props;
+
+const colorMap = {
+  "gold-500": "group-hover:border-yellow-500 text-yellow-500",
+  "indigo-500": "group-hover:border-indigo-500 text-indigo-500",
+  "cyan-500": "group-hover:border-cyan-500 text-cyan-500",
+  "emerald-500": "group-hover:border-emerald-500 text-emerald-500",
+};
+const accentClass = colorMap[accent] || colorMap["indigo-500"];
+---
+
+<a href={url} class="block h-full">
+  <article class={`relative h-full flex flex-col bg-slate-900/40 backdrop-blur-md border border-slate-800 rounded-xl overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:shadow-2xl ${accentClass}`}>
+    <div class="h-48 w-full overflow-hidden relative border-b border-slate-800">
+        <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+        <img src={image} alt={title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100" loading="lazy" />
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+      <div class="flex items-center gap-3 mb-2">
+        <span class={`w-2 h-2 rounded-full ${accentClass.includes('yellow') ? 'bg-yellow-500' : accentClass.includes('cyan') ? 'bg-cyan-500' : 'bg-indigo-500'}`}></span>
+        <h3 class="text-xl font-bold text-slate-100">{title}</h3>
+      </div>
+      <span class="text-xs font-mono text-slate-500 uppercase tracking-wider mb-4 border border-slate-800 px-2 py-1 rounded w-fit">// {role}</span>
+      <p class="text-sm text-slate-400 font-light leading-relaxed mb-6 flex-grow">{description}</p>
+      <div class="flex flex-wrap gap-2 mt-auto">
+        {stack.map((tech) => (
+          <span class="text-[10px] font-mono text-slate-500 bg-slate-900 border border-slate-800 px-2 py-1 rounded">{tech}</span>
+        ))}
+      </div>
+    </div>
+  </article>
+</a>

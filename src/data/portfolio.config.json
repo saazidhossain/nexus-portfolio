@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "version": "NEXUS_v3.0",
+    "last_synced": "2026-01-20"
+  },
+  "identity": {
+    "name": "Sazid Hossain",
+    "role": "Creative Technologist & Web Strategist",
+    "philosophy": "Have a Cherish and Have it.",
+    "avatar_url": "/profile.jpg",
+    "location": "Bangladesh",
+    "availability": "API: ACTIVE"
+  },
+  "nexus_terminal": {
+    "efficiency": 100,
+    "storage_drive": "OneDrive (1TB) Linked"
+  },
+  "projects": [
+    {
+      "id": "ju-45",
+      "title": "Shikkha Somaponi Utshob 45",
+      "role": "Lead Strategist",
+      "stack": ["Branding", "Logistics", "Digital Portal"],
+      "description": "Orchestrated branding and digital infrastructure for 2,000+ students at Jahangirnagar University.",
+      "image": "/ju-rag.jpg",
+      "accent": "gold-500",
+      "url": "#"
+    },
+    {
+      "id": "dokan-os",
+      "title": "Dokan OS",
+      "role": "Product Architect",
+      "stack": ["F-Commerce", "Banglish AI", "WhatsApp API"],
+      "description": "Retail automation engine featuring a localized AI sales bot and inventory management.",
+      "image": "/dokan.jpg",
+      "accent": "indigo-500",
+      "url": "#"
+    },
+    {
+      "id": "vabuuk",
+      "title": "Vabuuk Creative Studio",
+      "role": "Content Engineer",
+      "stack": ["NotebookLM", "Philosophy", "Cyber-Noir"],
+      "description": "A digital sage tool fused with Google NotebookLM for philosophy-driven content engineering.",
+      "image": "/vabuuk.jpg",
+      "accent": "cyan-500",
+      "url": "#"
+    }
+  ],
+  "socials": [
+    { "url": "https://github.com/saazidhossain", "icon": "fa-github" },
+    { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
+    { "url": "#", "icon": "fa-linkedin" }
+  ]
+}
