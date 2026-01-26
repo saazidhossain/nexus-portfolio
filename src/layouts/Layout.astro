@@ -5,117 +5,153 @@ import config from '../document/config.json';
 import '../styles/global.css';
 
 interface Props {
-	title?: string;
-	description?: string;
+  title?: string;
+  description?: string;
 }
 
-const { 
-  title = config.site_meta.title, 
-  description = config.site_meta.description 
-} = Astro.props;
+const {
+  title = config.site_meta.title,
+  description = config.site_meta.description
+} = Astro.props as Props;
 
-const { identity, navigation, socials, theme } = config;
+const { identity, navigation = [], socials = [], theme } = config;
 ---
-
 <!doctype html>
-<html lang={config.site_meta.lang} class="dark">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		
+<html lang={config.site_meta.lang ?? 'en'} class={theme === 'dark' ? 'dark' : ''}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={config.site_meta.external_asset_host + config.site_meta.og_image} />
+    <meta
+      property="og:image"
+      content={`${config.site_meta.external_asset_host ?? ''}${config.site_meta.og_image ?? ''}`}
+    />
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:creator" content={identity.handle} />
+    <meta property="twitter:creator" content={identity?.handle ?? ''} />
 
-		<title>{title}</title>
+    <title>{title}</title>
     <ViewTransitions />
-	</head>
-	<body class="flex flex-col min-h-screen max-w-5xl mx-auto px-6 border-x border-slate-900/50 bg-[#020617]">
-		
+  </head>
+
+  <body class="flex flex-col min-h-screen max-w-5xl mx-auto px-6 border-x border-slate-900/50 bg-[#020617]">
     <header class="py-8 flex justify-between items-center select-none">
-      <a href="/" class="font-mono text-xl font-bold tracking-tighter hover:text-emerald-400 transition-colors">
-        {identity.name}<span class="text-indigo-500">_</span>
+      <a
+        href="/"
+        class="font-mono text-xl font-bold tracking-tighter hover:text-emerald-400 transition-colors"
+        aria-label="Home"
+      >
+        {identity?.name}<span class="text-indigo-500">_</span>
       </a>
-      
-      <nav class="hidden md:flex gap-6 font-mono text-sm text-slate-400">
+
+      <nav class="hidden md:flex gap-6 font-mono text-sm text-slate-400" aria-label="Primary navigation">
         {navigation.map((item) => (
-          <a href={item.path} class="hover:text-white transition-colors">
+          <a key={item.path} href={item.path} class="hover:text-white transition-colors">
             {item.label}
           </a>
         ))}
       </nav>
 
-      <button class="md:hidden text-slate-400">///</button>
+      <button class="md:hidden text-slate-400" aria-label="Open menu" type="button">///</button>
     </header>
 
     <main class="flex-grow py-10 relative z-10">
-			<slot />
-		</main>
+      <slot />
+    </main>
 
     <footer class="py-8 mt-12 border-t border-slate-800 text-slate-500 text-xs font-mono flex justify-between items-center">
       <div>
-        <p>&copy; {new Date().getFullYear()} {identity.name}</p>
+        <p>&copy; {new Date().getFullYear()} {identity?.name}</p>
         <p class="opacity-50">System: Nexus v1.0 | Status: Online</p>
       </div>
-      <div class="flex gap-4">
+      <div class="flex gap-4" aria-label="Social links">
         {socials.map((s) => (
-          <a href={s.url} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">
+          <a
+            key={s.url}
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-emerald-400 transition-colors"
+          >
             {s.platform}
           </a>
         ))}
       </div>
     </footer>
-<!-- The Secret Nexus Terminal -->
-<div id="nexus-terminal" class="fixed bottom-4 right-4 z-50 hidden md:block">
-  <div class="bg-slate-900/90 backdrop-blur border border-slate-700 rounded-lg p-2 shadow-2xl w-64 text-[10px] font-mono text-slate-400">
-    <div class="flex justify-between items-center mb-2 border-b border-slate-800 pb-1">
-      <span class="text-emerald-500">● ONLINE</span>
-      <span>NEXUS_CORE v5.0</span>
-    </div>
-    <div id="terminal-content" class="h-16 overflow-y-auto space-y-1">
-      <p>> System initialized...</p>
-      <p>> Connected to IntelWebhost Vault...</p>
-      <p>> Waiting for input...</p>
-    </div>
-    <input type="text" placeholder="Type 'help'..." class="w-full bg-transparent border-none outline-none text-indigo-400 mt-2 focus:ring-0 placeholder-slate-700" onkeydown="handleCommand(event)">
-  </div>
-</div>
 
-<script is:inline>
-  function handleCommand(e) {
-    if (e.key === 'Enter') {
-      const cmd = e.target.value.toLowerCase();
-      const output = document.getElementById('terminal-content');
-      
-      let response = "> Command not found.";
-      if (cmd === 'help') response = "> Try: 'status', 'contact', 'matrix'";
-      if (cmd === 'status') response = "> All Systems Operational. Efficiency: 99%";
-      if (cmd === 'contact') response = "> Mail: contact@sazid.com";
-      if (cmd === 'matrix') {
-        document.body.style.filter = "hue-rotate(90deg)";
-        response = "> Matrix Mode Enabled.";
+    <!-- The Secret Nexus Terminal -->
+    <div id="nexus-terminal" class="fixed bottom-4 right-4 z-50 hidden md:block" role="region" aria-label="Nexus terminal">
+      <div class="bg-slate-900/90 backdrop-blur border border-slate-700 rounded-lg p-2 shadow-2xl w-64 text-[10px] font-mono text-slate-400">
+        <div class="flex justify-between items-center mb-2 border-b border-slate-800 pb-1">
+          <span class="text-emerald-500">● ONLINE</span>
+          <span>NEXUS_CORE v5.0</span>
+        </div>
+        <div id="terminal-content" class="h-16 overflow-y-auto space-y-1" aria-live="polite">
+          <p>&gt; System initialized...</p>
+          <p>&gt; Connected to IntelWebhost Vault...</p>
+          <p>&gt; Waiting for input...</p>
+        </div>
+        <input
+          id="nexus-input"
+          type="text"
+          placeholder="Type 'help'..."
+          class="w-full bg-transparent border-none outline-none text-indigo-400 mt-2 focus:ring-0 placeholder-slate-700"
+          aria-label="Nexus command input"
+        />
+      </div>
+    </div>
+
+    <script is:inline>
+      // Terminal command handler attached via event listener for cleaner markup
+      function handleCommandInput(e) {
+        if (e.key === 'Enter') {
+          const input = e.target;
+          const raw = input.value || '';
+          const cmd = raw.trim().toLowerCase();
+          const output = document.getElementById('terminal-content');
+
+          if (!output) {
+            input.value = '';
+            return;
+          }
+
+          let response = "> Command not found.";
+          if (cmd === 'help') response = "> Try: 'status', 'contact', 'matrix'";
+          if (cmd === 'status') response = "> All Systems Operational. Efficiency: 99%";
+          if (cmd === 'contact') response = "> Mail: contact@sazid.com";
+          if (cmd === 'matrix') {
+            document.body.style.filter = "hue-rotate(90deg)";
+            response = "> Matrix Mode Enabled.";
+          }
+
+          const cmdLine = document.createElement('p');
+          cmdLine.innerText = `> ${cmd || raw}`;
+          output.appendChild(cmdLine);
+
+          const resLine = document.createElement('p');
+          resLine.innerText = response;
+          resLine.classList.add('text-indigo-300');
+          output.appendChild(resLine);
+
+          // Keep terminal output bounded to last 100 lines to avoid memory bloat
+          while (output.children.length > 100) {
+            output.removeChild(output.firstChild);
+          }
+
+          input.value = '';
+          output.scrollTop = output.scrollHeight;
+        }
       }
 
-      const p = document.createElement('p');
-      p.innerText = `> ${cmd}`;
-      output.appendChild(p);
-      
-      const res = document.createElement('p');
-      res.innerText = response;
-      res.classList.add('text-indigo-300');
-      output.appendChild(res);
-      
-      e.target.value = '';
-      output.scrollTop = output.scrollHeight;
-    }
-  }
-</script>
-
-	</body>
+      document.addEventListener('DOMContentLoaded', () => {
+        const nexusInput = document.getElementById('nexus-input');
+        if (nexusInput) nexusInput.addEventListener('keydown', handleCommandInput);
+      });
+    </script>
+  </body>
 </html>
