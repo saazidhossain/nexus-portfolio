@@ -1,0 +1,76 @@
+---
+// src/layouts/Layout.astro
+import { ViewTransitions } from 'astro:transitions';
+import config from '../document/config.json';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+  title = config.site_meta.title, 
+  description = config.site_meta.description 
+} = Astro.props;
+
+const { identity, navigation, socials, theme } = config;
+---
+
+<!doctype html>
+<html lang={config.site_meta.lang} class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={config.site_meta.external_asset_host + config.site_meta.og_image} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:creator" content={identity.handle} />
+
+		<title>{title}</title>
+    <ViewTransitions />
+	</head>
+	<body class="flex flex-col min-h-screen max-w-5xl mx-auto px-6 border-x border-slate-900/50 bg-[#020617]">
+		
+    <header class="py-8 flex justify-between items-center select-none">
+      <a href="/" class="font-mono text-xl font-bold tracking-tighter hover:text-emerald-400 transition-colors">
+        {identity.name}<span class="text-indigo-500">_</span>
+      </a>
+      
+      <nav class="hidden md:flex gap-6 font-mono text-sm text-slate-400">
+        {navigation.map((item) => (
+          <a href={item.path} class="hover:text-white transition-colors">
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <button class="md:hidden text-slate-400">///</button>
+    </header>
+
+    <main class="flex-grow py-10 relative z-10">
+			<slot />
+		</main>
+
+    <footer class="py-8 mt-12 border-t border-slate-800 text-slate-500 text-xs font-mono flex justify-between items-center">
+      <div>
+        <p>&copy; {new Date().getFullYear()} {identity.name}</p>
+        <p class="opacity-50">System: Nexus v1.0 | Status: Online</p>
+      </div>
+      <div class="flex gap-4">
+        {socials.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors">
+            {s.platform}
+          </a>
+        ))}
+      </div>
+    </footer>
+
+	</body>
+</html>
