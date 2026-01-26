@@ -71,6 +71,51 @@ const { identity, navigation, socials, theme } = config;
         ))}
       </div>
     </footer>
+<!-- The Secret Nexus Terminal -->
+<div id="nexus-terminal" class="fixed bottom-4 right-4 z-50 hidden md:block">
+  <div class="bg-slate-900/90 backdrop-blur border border-slate-700 rounded-lg p-2 shadow-2xl w-64 text-[10px] font-mono text-slate-400">
+    <div class="flex justify-between items-center mb-2 border-b border-slate-800 pb-1">
+      <span class="text-emerald-500">● ONLINE</span>
+      <span>NEXUS_CORE v5.0</span>
+    </div>
+    <div id="terminal-content" class="h-16 overflow-y-auto space-y-1">
+      <p>> System initialized...</p>
+      <p>> Connected to IntelWebhost Vault...</p>
+      <p>> Waiting for input...</p>
+    </div>
+    <input type="text" placeholder="Type 'help'..." class="w-full bg-transparent border-none outline-none text-indigo-400 mt-2 focus:ring-0 placeholder-slate-700" onkeydown="handleCommand(event)">
+  </div>
+</div>
+
+<script is:inline>
+  function handleCommand(e) {
+    if (e.key === 'Enter') {
+      const cmd = e.target.value.toLowerCase();
+      const output = document.getElementById('terminal-content');
+      
+      let response = "> Command not found.";
+      if (cmd === 'help') response = "> Try: 'status', 'contact', 'matrix'";
+      if (cmd === 'status') response = "> All Systems Operational. Efficiency: 99%";
+      if (cmd === 'contact') response = "> Mail: contact@sazid.com";
+      if (cmd === 'matrix') {
+        document.body.style.filter = "hue-rotate(90deg)";
+        response = "> Matrix Mode Enabled.";
+      }
+
+      const p = document.createElement('p');
+      p.innerText = `> ${cmd}`;
+      output.appendChild(p);
+      
+      const res = document.createElement('p');
+      res.innerText = response;
+      res.classList.add('text-indigo-300');
+      output.appendChild(res);
+      
+      e.target.value = '';
+      output.scrollTop = output.scrollHeight;
+    }
+  }
+</script>
 
 	</body>
 </html>
