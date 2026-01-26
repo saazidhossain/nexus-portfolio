@@ -1,0 +1,55 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+}
+
+html {
+  font-family: var(--font-body);
+  background: #020617; /* Slate-950 */
+  color: #e2e8f0; /* Slate-200 */
+  scroll-behavior: smooth;
+}
+
+/* THE NEXUS GRID: Subtle background texture */
+body {
+  background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
+    linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  background-position: center top;
+  /* Mask the grid to fade out at edges */
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  min-height: 100vh;
+}
+
+/* TYPOGRAPHY UTILS */
+h1, h2, h3, h4, .font-mono {
+  font-family: var(--font-code);
+}
+
+/* SCROLLBAR HACK */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* UTILITY: GLOW TEXT */
+.text-glow {
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.5); /* Emerald Glow */
+}
