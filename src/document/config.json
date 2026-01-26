@@ -1,0 +1,120 @@
+{
+  "site_meta": {
+    "title": "Sazid Hossain | Nexus Prime",
+    "description": "Creative Technologist & Web Strategist. Specializing in Zero-Cost, High-Impact Architecture via the Nexus Stack.",
+    "url": "https://sazid.vercel.app",
+    "author": "Sazid Hossain",
+    "lang": "en",
+    "og_image": "nexus-portfolio-og-social.jpg",
+    "external_asset_host": "https://cdn.intelwebhost.com/sazid-assets/"
+  },
+  "identity": {
+    "name": "Sazid Hossain",
+    "handle": "@saazidhossain",
+    "role": "Creative Technologist & Web Strategist",
+    "tagline": "Have a Cherish and Have it.",
+    "location": "Dhaka, Bangladesh",
+    "availability": "Open for Strategy Sessions",
+    "avatar": "sazid-profile-avatar-v1.jpg"
+  },
+  "theme": {
+    "mode": "cyber-noir",
+    "font_primary": "Inter",
+    "font_code": "JetBrains Mono",
+    "colors": {
+      "background": "slate-950",
+      "primary": "indigo-500",
+      "accent": "emerald-400",
+      "highlight": "gold-400"
+    }
+  },
+  "navigation": [
+    { "label": "~/home", "path": "/" },
+    { "label": "./projects", "path": "/projects" },
+    { "label": "./philosophy", "path": "/philosophy" },
+    { "label": "./services", "path": "/services" },
+    { "label": "./writing", "path": "/blog" }
+  ],
+  "hero": {
+    "headline": "Architecting the <span class='text-emerald-400'>Zero-Cost</span> Future.",
+    "subheadline": "I build high-performance, cloud-native web systems using the 4GB Rule. No bloat. No overhead. Just impact.",
+    "cta_primary": { "label": "Initialize System", "link": "/projects" },
+    "cta_secondary": { "label": "View Source", "link": "https://github.com/saazidhossain" }
+  },
+  "philosophy": {
+    "title": "The Nexus Philosophy",
+    "pillars": [
+      {
+        "icon": "cpu",
+        "title": "The 4GB Rule",
+        "desc": "Efficiency over excess. If it can't build on a 4GB machine, it's too heavy."
+      },
+      {
+        "icon": "cloud",
+        "title": "Hybrid-Cloud Assets",
+        "desc": "Code lives on Vercel. Heavy assets live on IntelWebhost. Zero latency."
+      },
+      {
+        "icon": "rss",
+        "title": "COPE Model",
+        "desc": "Create Once, Publish Everywhere. JSON updates trigger global feeds."
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "nexus-portfolio",
+      "title": "The Nexus Portfolio",
+      "category": "Architecture",
+      "status": "Live",
+      "pubDate": "2023-10-01",
+      "stack": ["Astro", "Tailwind", "JSON"],
+      "description": "A meta-case study on building a high-performance site without local heavy environments.",
+      "results": ["LCP 0.8s", "100/100 Lighthouse", "$0 Hosting"],
+      "links": {
+        "demo": "https://sazid.vercel.app",
+        "repo": "https://github.com/saazidhossain/nexus"
+      },
+      "media": {
+        "thumbnail": "nexus-portfolio-thumb.jpg",
+        "video": "nexus-portfolio-walkthrough.mp4"
+      }
+    },
+    {
+      "id": "dokan-os",
+      "title": "Dokan OS / Auto-Engine",
+      "category": "Automation",
+      "status": "Beta",
+      "pubDate": "2023-11-15",
+      "stack": ["Next.js", "IFTTT", "RSS XML"],
+      "description": "E-commerce automation engine. One JSON update triggers Website, FB & LinkedIn.",
+      "results": ["80% Less Manual Ops", "30% Engagement Boost"],
+      "links": {
+        "demo": "#",
+        "repo": "#"
+      },
+      "media": {
+        "thumbnail": "dokan-os-thumb.jpg",
+        "video": "dokan-os-demo.mp4"
+      }
+    }
+  ],
+  "services": [
+    {
+      "title": "The Blueprint (Audit)",
+      "price": "Contact",
+      "features": ["Stack Review", "Migration Strategy", "Cost Analysis"]
+    },
+    {
+      "title": "The Migration (Build)",
+      "price": "Contact",
+      "features": ["CMS to Astro Conversion", "Headless Setup", "Asset Optimization"]
+    }
+  ],
+  "socials": [
+    { "platform": "GitHub", "url": "https://github.com/saazidhossain", "icon": "github" },
+    { "platform": "LinkedIn", "url": "https://linkedin.com/in/saazidhossain", "icon": "linkedin" },
+    { "platform": "Twitter", "url": "https://x.com/saazidhossain", "icon": "twitter" },
+    { "platform": "Email", "url": "mailto:hello@sazidhossain.com", "icon": "mail" }
+  ]
+}
