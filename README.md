@@ -3,7 +3,7 @@
 ### Creative Technologist | Web Strategist | AI Automation Lead
 *Bridge between Philosophy & Technology. Transforming Chaos into Logic.*
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-D4AF37?style=for-the-badge&logo=vercel&logoColor=white)](https://ju45th.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit%20Site-D4AF37?style=for-the-badge&logo=vercel&logoColor=white)](https://nexus-portfolio-nine.vercel.app/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/saazidhossain)
 [![Behance](https://img.shields.io/badge/Behance-View%20Designs-1769ff?style=for-the-badge&logo=behance&logoColor=white)](https://behance.net/saazidhossain)
 
