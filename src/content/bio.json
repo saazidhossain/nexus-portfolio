@@ -1,0 +1,77 @@
+ 
+{
+  "name": "Sazid Hossain",
+  "tagline": "Creative Technologist & Zero‑Cost Automation Architect",
+  "location": "Dhaka, Bangladesh",
+  "about": "I design human‑centric digital systems that combine analytical reasoning with hands‑on engineering. With experience across IT Support, Web Development, Cloud (Azure), Data Science, and Digital Transformation, I help individuals, startups, and organizations adopt modern, efficient, zero-cost workflows. My work blends philosophy, technology, and automation—building solutions that are scalable, minimal, and meaningful.",
+  "specializations": [
+    "IT Support & System Optimization",
+    "Full‑Stack & WordPress Development",
+    "Cloud Workflows (Azure)",
+    "Automation & Zero‑Cost Productivity Systems",
+    "Data Science & Analytical Reasoning",
+    "Digital Transformation Strategy"
+  ],
+  "skills": {
+    "technical": [
+      "Python",
+      "Data Science",
+      "Machine Learning",
+      "Microsoft Azure",
+      "HTML",
+      "CSS",
+      "WordPress",
+      "Shopify",
+      "API Integration",
+      "System Security",
+      "SEO"
+    ],
+    "tools": [
+      "Git",
+      "GitHub",
+      "Linux",
+      "Postman",
+      "VS Code",
+      "Low‑Code Automation Tools"
+    ],
+    "soft": [
+      "Leadership",
+      "Public Speaking",
+      "Debate",
+      "Research",
+      "Systems Thinking",
+      "Critical Problem‑Solving"
+    ]
+  },
+  "experienceHighlights": [
+    "Developed secure and scalable web solutions at Codeman BD.",
+    "Designed cloud‑based integration and automation strategies as a Digital Transformation Consultant.",
+    "Enhanced IoT and smart systems performance through systems analysis and optimization.",
+    "Led cross-functional teams and delivered stakeholder‑focused tech solutions."
+  ],
+  "education": [
+    {
+      "degree": "MA in Philosophy (Appeared)",
+      "institution": "Jahangirnagar University",
+      "year": "2023"
+    },
+    {
+      "degree": "BA in Philosophy",
+      "institution": "Jahangirnagar University",
+      "year": "2022"
+    }
+  ],
+  "certifications": [
+    "Google IT Support Professional Certificate",
+    "Microsoft Certified: Azure Developer Associate",
+    "Data Science Specialization — University of Michigan",
+    "Complete 2024 Web Development Bootcamp — Udemy",
+    "Python for Data Science & ML — Udemy",
+    "Certified Web Designer — CodemanBD"
+  ],
+  "languages": ["Bengali (Native)", "English (Fluent)"],
+  "contact": {
+    "email": "saazidhossain@gmail.com",
+    "phone": "01770434122"
+  }
+}
