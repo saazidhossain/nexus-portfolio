@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "NEXUS_v5.0_ULTIMATE",
-    "last_synced": "2026-01-20"
+    "version": "NEXUS_v6.0_ULTIMATE",
+    "last_synced": "2026-02-24"
   },
   "identity": {
     "name": "Sazid Hossain",
@@ -33,6 +33,7 @@
     { "name": "GitHub", "icon": "fa-github", "color": "text-white" }
   ],
   "micro_logs": [
+    { "date": "2026-02-24", "type": "SYSTEM", "content": "Injected M.R. Karim Digital Identity into Nexus Core." },
     { "date": "2026-01-20", "type": "SYSTEM", "content": "Deployed Nexus Portfolio v5.0 with Digital Garden integration." },
     { "date": "2026-01-18", "type": "READING", "content": "Finished 'Atomic Habits'. Implementing 1% improvement rule in code architecture." },
     { "date": "2026-01-15", "type": "THOUGHT", "content": "Minimalism isn't about having less, it's about making room for what matters." }
@@ -47,6 +48,17 @@
   "//_EXISTING_DATA": "BELOW_THIS_LINE",
 
   "projects": [
+    {
+      "id": "mr-karim",
+      "title": "M.R. Karim Digital Identity",
+      "role": "UX Architect",
+      "stack": ["React", "Tailwind CSS", "UI/UX"],
+      "description": "A high-trust, responsive digital portfolio engineered for a Dhaka WASA Official. Features custom glassmorphism and chronological UI timelines.",
+      "content": "Full case study content here...",
+      "image": "/rezaul-portfolio.png",
+      "accent": "cyan-500",
+      "url": "/mr-karim.html"
+    },
     {
       "id": "ju-45",
       "title": "Shikkha Somaponi Utshob 45",
@@ -81,16 +93,6 @@
       "url": "/projects/vabuuk"
     }
   ],
-  {
-  "id": "mr-karim-portfolio",
-  "title": "M.R. Karim Digital Identity",
-  "role": "// UX ARCHITECT",
-  "desc": "A high-trust, responsive digital portfolio engineered for a Dhaka WASA Official. Features custom glassmorphism, chronological UI timelines, and conversion-optimized form architecture.",
-  "tags": ["UI/UX Design", "React", "Tailwind CSS"],
-  "image": "/images/rezaul-portfolio.png", 
-  "demoLink": "/mr-karim.html",
-  "span": "col-span-1 md:col-span-2"
-}
   "socials": [
     { "url": "https://github.com/saazidhossain", "icon": "fa-github" },
     { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
@@ -98,4 +100,3 @@
     { "url": "#", "icon": "fa-linkedin" }
   ]
 }
-
