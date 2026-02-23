@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>M.R. Karim | Digital Portfolio</title>
+    
+    <!-- SYSTEM DEPENDENCIES (Zero-Build Protocol) -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -13,22 +15,103 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useRef } = React;
 
+        // --- GEMINI API KEY ---
+        // The execution environment will provide the key. Leave empty.
+        const apiKey = ""; 
+
+        // --- ICON SYSTEM ---
         const Icons = {
-            Droplets: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>,
-            Building2: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>,
-            Briefcase: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>,
-            GraduationCap: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
-            Calendar: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>,
-            ShieldCheck: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>,
-            Activity: () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Menu: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>,
+            X: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
+            Droplets: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>,
+            Building2: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>,
+            Briefcase: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>,
+            Mail: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
+            MapPin: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>,
+            ChevronRight: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>,
+            Award: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>,
+            GraduationCap: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>,
+            Calendar: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>,
+            ShieldCheck: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>,
+            Activity: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>,
+            Sparkles: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>,
+            MessageCircle: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>,
+            Send: ({className}) => <svg className={className} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        };
+
+        // --- COMPONENTS ---
+        const Navbar = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const navLinks = ['About', 'Journey', 'Expertise', 'Contact'];
+
+            return (
+                <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/95 shadow-lg shadow-cyan-900/10 py-3 backdrop-blur-md border-b border-slate-800' : 'bg-transparent py-5'}`}>
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between items-center">
+                            <div className="flex items-center space-x-2 group cursor-pointer">
+                                <div className="bg-gradient-to-br from-cyan-400 to-blue-600 p-2 rounded-lg group-hover:shadow-lg group-hover:shadow-cyan-500/30 transition-all duration-300">
+                                    <Icons.Droplets className="h-6 w-6 text-white" />
+                                </div>
+                                <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${scrolled ? 'text-white' : 'text-slate-900 lg:text-slate-900'}`}>M.R. Karim</span>
+                            </div>
+                            
+                            <div className="hidden md:flex space-x-8 items-center border border-slate-700/30 bg-slate-900/10 backdrop-blur-md px-6 py-2 rounded-full">
+                                {navLinks.map(link => (
+                                    <a key={link} href={`#${link.toLowerCase()}`} className={`text-sm font-semibold uppercase tracking-wider transition-colors hover:text-cyan-500 ${scrolled ? 'text-slate-300' : 'text-slate-600'}`}>
+                                        {link}
+                                    </a>
+                                ))}
+                            </div>
+
+                            <div className="hidden md:block">
+                                <a href="#contact" className="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white transition duration-300 ease-out border-2 border-cyan-500 rounded-full shadow-md group">
+                                    <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-cyan-500 group-hover:translate-x-0 ease">
+                                        <Icons.ChevronRight className="w-5 h-5" />
+                                    </span>
+                                    <span className="absolute flex items-center justify-center w-full h-full text-cyan-500 transition-all duration-300 transform group-hover:translate-x-full ease">Connect</span>
+                                    <span className="relative invisible">Connect</span>
+                                </a>
+                            </div>
+
+                            <div className="md:hidden">
+                                <button onClick={() => setIsOpen(!isOpen)} className={`focus:outline-none transition-colors ${scrolled ? 'text-white' : 'text-slate-900'}`}>
+                                    {isOpen ? <Icons.X className="h-7 w-7" /> : <Icons.Menu className="h-7 w-7" />}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={`md:hidden absolute top-full left-0 w-full bg-slate-900 border-t border-slate-800 transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 max-h-64' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                        <div className="px-4 py-4 space-y-2">
+                            {navLinks.map(link => (
+                                <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setIsOpen(false)} className="block px-4 py-3 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-colors">
+                                    {link}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </nav>
+            );
         };
 
         const Hero = () => {
+            const profileImageUrl = "https://drive.google.com/uc?export=view&id=1Hg0Pqr9wbZ6QhFpO3OqieL9CP8hP0Q8r";
+            const [imgError, setImgError] = useState(false);
+
             return (
-                <section className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-slate-50">
+                <section id="about" className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-slate-50">
                     <div className="absolute inset-0 z-0">
+                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
                         <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-cyan-400 opacity-20 blur-[100px]"></div>
                         <div className="absolute right-0 bottom-0 -z-10 h-[400px] w-[400px] rounded-full bg-blue-600 opacity-10 blur-[120px]"></div>
                     </div>
@@ -46,21 +129,61 @@
                                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-cyan-500">Karim (Rajib)</span>
                                     </h1>
                                     <div className="flex items-center justify-center lg:justify-start space-x-3 text-xl font-semibold text-slate-600">
-                                        <div className="text-cyan-600"><Icons.ShieldCheck /></div>
+                                        <div className="text-cyan-600"><Icons.ShieldCheck className="w-6 h-6" /></div>
                                         <h2>Sub-Assistant Engineer (Civil)</h2>
                                     </div>
                                 </div>
                                 <p className="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
                                     Overseeing critical public water infrastructure at the <span className="text-slate-900 font-bold border-b-2 border-cyan-400/50">Savar-Keraniganj Wellfield Plant</span>. Dedicated to sustainable civil engineering and urban resource management.
                                 </p>
+                                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                                    <a href="#journey" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-xl hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5">
+                                        Explore Career Journey
+                                        <Icons.Activity className="ml-2 w-5 h-5" />
+                                    </a>
+                                    <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-slate-700 transition-all duration-200 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:shadow-md hover:-translate-y-0.5">
+                                        Official Contact
+                                    </a>
+                                </div>
                             </div>
                             
-                            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+                            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative pb-10 lg:pb-0">
                                 <div className="relative w-72 h-72 md:w-96 md:h-96">
                                     <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400 to-blue-600 rounded-[2rem] rotate-3 opacity-20 blur-lg"></div>
-                                    <div className="relative h-full w-full rounded-[2rem] p-2 bg-white/50 backdrop-blur-sm border border-white/60 shadow-2xl z-10 flex flex-col items-center justify-center text-center">
-                                        <div className="text-slate-400 mb-2"><Icons.ShieldCheck /></div>
-                                        <span className="font-semibold text-slate-700">Image Uploaded to Portfolio Root</span>
+                                    <div className="relative h-full w-full rounded-[2rem] p-2 bg-white/50 backdrop-blur-sm border border-white/60 shadow-2xl z-10 flex flex-col items-center justify-center text-center overflow-hidden">
+                                        {!imgError ? (
+                                            <img src={profileImageUrl} alt="Md. Rezaul Karim (Rajib)" onError={() => setImgError(true)} className="rounded-[1.5rem] object-cover object-top w-full h-full shadow-inner" />
+                                        ) : (
+                                            <div className="rounded-[1.5rem] w-full h-full bg-slate-100 flex flex-col items-center justify-center p-6 text-center border-2 border-dashed border-slate-300">
+                                                <Icons.ShieldCheck className="w-12 h-12 text-slate-400 mb-2" />
+                                                <span className="font-semibold text-slate-700">Image Protected</span>
+                                                <span className="text-xs text-slate-500 mt-1">Set Google Drive link to 'Anyone with link'</span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="absolute -top-6 -right-6 md:-right-12 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white z-20 animate-[bounce_4s_infinite_ease-in-out]">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="bg-cyan-100 p-2.5 rounded-xl">
+                                                <Icons.Award className="w-6 h-6 text-cyan-600" />
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-extrabold text-slate-900">15+ Years</p>
+                                                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Experience</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="absolute -bottom-8 -left-6 md:-left-12 bg-white/80 backdrop-blur-md p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white z-20 animate-[bounce_5s_infinite_ease-in-out_reverse]">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="bg-blue-100 p-2.5 rounded-xl">
+                                                <Icons.Building2 className="w-6 h-6 text-blue-600" />
+                                            </div>
+                                            <div>
+                                                <p className="text-sm font-extrabold text-slate-900">Dhaka WASA</p>
+                                                <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Current Posting</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -72,13 +195,13 @@
 
         const Timeline = () => {
             const experiences = [
-                { year: "2011 - Present", title: "Sub-Assistant Engineer (Civil)", entity: "Dhaka WASA", description: "Joined Dhaka WASA in 2011. Currently posted at the Savar-Keraniganj Wellfield Plant.", icon: <Icons.Building2 />, color: "bg-blue-600" },
-                { year: "Post-Diploma", title: "Civil Engineer", entity: "Private Sector Firm", description: "Began professional career immediately after the final semester of the Diploma program.", icon: <Icons.Briefcase />, color: "bg-slate-600" },
-                { year: "4-Year Program", title: "Diploma in Engineering (Civil)", entity: "Dhaka Polytechnic Institute", description: "Specializing in structural engineering, surveying, and construction management.", icon: <Icons.GraduationCap />, color: "bg-cyan-600" }
+                { year: "2011 - Present", title: "Sub-Assistant Engineer (Civil)", entity: "Dhaka WASA", description: "Joined Dhaka WASA in 2011. Currently posted at the Savar-Keraniganj Wellfield Plant.", icon: <Icons.Building2 className="w-5 h-5 text-white" />, color: "bg-blue-600" },
+                { year: "Post-Diploma", title: "Civil Engineer", entity: "Private Sector Firm", description: "Began professional career immediately after the final semester of the Diploma program.", icon: <Icons.Briefcase className="w-5 h-5 text-white" />, color: "bg-slate-600" },
+                { year: "4-Year Program", title: "Diploma in Engineering (Civil)", entity: "Dhaka Polytechnic Institute", description: "Specializing in structural engineering, surveying, and construction management.", icon: <Icons.GraduationCap className="w-5 h-5 text-white" />, color: "bg-cyan-600" }
             ];
 
             return (
-                <section className="py-20 bg-white">
+                <section id="journey" className="py-20 bg-white">
                     <div className="max-w-4xl mx-auto px-4">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl font-extrabold text-slate-900">Career Journey & Education</h2>
@@ -87,7 +210,7 @@
                         <div className="relative border-l-2 border-slate-200 ml-3 md:ml-6 space-y-12">
                             {experiences.map((exp, index) => (
                                 <div key={index} className="relative pl-8 md:pl-10">
-                                    <div className={`absolute -left-[17px] mt-1.5 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center ring-4 ring-white shadow-sm text-white scale-75`}>
+                                    <div className={`absolute -left-[17px] mt-1.5 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center ring-4 ring-white shadow-sm`}>
                                         {exp.icon}
                                     </div>
                                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm">
@@ -104,11 +227,346 @@
             );
         };
 
+        const Expertise = () => {
+            return (
+                <section id="expertise" className="py-20 bg-slate-900 text-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-3xl mx-auto mb-16">
+                            <h2 className="text-3xl font-extrabold sm:text-4xl">Areas of Expertise</h2>
+                            <div className="mt-2 w-24 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+                            <p className="mt-4 text-lg text-slate-400">Specialized knowledge applied to critical water infrastructure management.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {[
+                                { title: 'Wellfield Operations', desc: 'Technical management and oversight of groundwater extraction facilities, ensuring sustainable and efficient production.' },
+                                { title: 'Civil Maintenance', desc: 'Supervision of structural health, repairs, and site development for large-scale public utility installations.' },
+                                { title: 'Public Project Execution', desc: 'Delivering engineering projects within government frameworks, prioritizing quality, safety, and public service standards.' }
+                            ].map((skill, index) => (
+                                <div key={index} className="bg-slate-800 rounded-2xl p-8 border border-slate-700 hover:-translate-y-1 transition-transform duration-300">
+                                    <h3 className="text-xl font-bold text-white mb-3 flex items-center">
+                                        <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                                        {skill.title}
+                                    </h3>
+                                    <p className="text-slate-400 leading-relaxed text-sm">{skill.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Contact = () => {
+            const [name, setName] = useState('');
+            const [message, setMessage] = useState('');
+            const [isDrafting, setIsDrafting] = useState(false);
+
+            // --- AI DRAFTING LOGIC ---
+            const handleDraftWithAI = async () => {
+                if (!message.trim()) {
+                    alert("Please write a few words about your inquiry first. Let AI expand it.");
+                    return;
+                }
+                
+                setIsDrafting(true);
+                
+                // Exponential backoff logic for retries
+                const fetchWithRetry = async (url, options, retries = 5, delay = 1000) => {
+                    for (let i = 0; i < retries; i++) {
+                        try {
+                            const res = await fetch(url, options);
+                            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                            return await res.json();
+                        } catch (err) {
+                            if (i === retries - 1) throw err;
+                            await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                        }
+                    }
+                };
+
+                const prompt = `Draft a professional, formal, and concise official inquiry message addressed to Md. Rezaul Karim (Rajib), Sub-Assistant Engineer (Civil) at Dhaka WASA. The sender is ${name || 'an interested professional'}. The core topic/intent is: "${message}". Format it ready to be sent.`;
+
+                try {
+                    const data = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            contents: [{ parts: [{ text: prompt }] }],
+                            systemInstruction: { parts: [{ text: "You are a professional business communication writer." }] }
+                        })
+                    });
+
+                    if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                        setMessage(data.candidates[0].content.parts[0].text.trim());
+                    } else {
+                        alert("Could not generate a draft. Please try again.");
+                    }
+                } catch (error) {
+                    alert("AI is temporarily unavailable. Please type your message manually.");
+                } finally {
+                    setIsDrafting(false);
+                }
+            };
+
+            return (
+                <section id="contact" className="py-20 bg-slate-50 relative">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
+                            <div className="grid grid-cols-1 lg:grid-cols-2">
+                                <div className="bg-blue-800 text-white p-10 lg:p-16 relative overflow-hidden flex flex-col justify-center">
+                                    <div className="absolute top-0 right-0 -mr-8 -mt-8 w-64 h-64 rounded-full bg-blue-600 opacity-50 blur-3xl"></div>
+                                    
+                                    <h3 className="text-3xl font-bold mb-6 relative z-10">Get In Touch</h3>
+                                    <p className="text-blue-100 mb-10 relative z-10 text-lg">
+                                        Available for professional communications regarding the Savar-Keraniganj Wellfield Plant and Dhaka WASA initiatives.
+                                    </p>
+                                    
+                                    <div className="space-y-8 relative z-10">
+                                        <div className="flex items-start space-x-4">
+                                            <Icons.MapPin className="w-6 h-6 text-cyan-300 mt-1 flex-shrink-0" />
+                                            <div>
+                                                <h4 className="font-semibold text-white">Current Posting</h4>
+                                                <p className="text-blue-100 mt-1 leading-relaxed">Savar-Keraniganj Wellfield Plant<br/>Dhaka WASA<br/>Dhaka, Bangladesh</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center space-x-4">
+                                            <Icons.Mail className="w-6 h-6 text-cyan-300 flex-shrink-0" />
+                                            <div>
+                                                <h4 className="font-semibold text-white">Email</h4>
+                                                <p className="text-blue-100 mt-1">Available upon official request</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="p-10 lg:p-16 flex flex-col justify-center bg-white">
+                                 <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); alert("Message sending feature will be implemented soon."); }}>
+                                    <div>
+                                        <label className="block text-sm font-medium text-slate-700 mb-2">Name / Organization</label>
+                                        <input 
+                                            type="text" 
+                                            value={name}
+                                            onChange={(e) => setName(e.target.value)}
+                                            className="w-full px-4 py-3 bg-slate-50 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all" 
+                                            placeholder="Enter your details" 
+                                        />
+                                    </div>
+                                    <div>
+                                        <div className="flex justify-between items-center mb-2">
+                                            <label className="block text-sm font-medium text-slate-700">Message</label>
+                                            <button 
+                                                type="button" 
+                                                onClick={handleDraftWithAI}
+                                                disabled={isDrafting}
+                                                className="text-xs font-bold text-cyan-600 hover:text-cyan-800 flex items-center gap-1 transition-colors disabled:opacity-50"
+                                            >
+                                                {isDrafting ? <span className="animate-pulse">Drafting...</span> : <><Icons.Sparkles className="w-3 h-3" /> Draft with AI</>}
+                                            </button>
+                                        </div>
+                                        <textarea 
+                                            rows="5" 
+                                            value={message}
+                                            onChange={(e) => setMessage(e.target.value)}
+                                            className="w-full px-4 py-3 bg-slate-50 rounded-lg border border-slate-200 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none" 
+                                            placeholder="State your official inquiry... or type a few words and click 'Draft with AI'."
+                                        ></textarea>
+                                    </div>
+                                    <button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-4 rounded-lg transition-colors flex justify-center items-center space-x-2 group">
+                                        <span>Send Message</span>
+                                        <Icons.ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // --- AI ASSISTANT CHATBOT COMPONENT ---
+        const AIAssistant = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            const [input, setInput] = useState('');
+            const [messages, setMessages] = useState([
+                { role: 'model', text: 'Hello. I am the AI assistant for Md. Rezaul Karim. How can I assist you with information regarding civil engineering or water infrastructure today?' }
+            ]);
+            const [isLoading, setIsLoading] = useState(false);
+            const messagesEndRef = useRef(null);
+
+            const scrollToBottom = () => {
+                messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+            };
+
+            useEffect(() => {
+                scrollToBottom();
+            }, [messages]);
+
+            const fetchWithRetry = async (url, options, retries = 5, delay = 1000) => {
+                for (let i = 0; i < retries; i++) {
+                    try {
+                        const res = await fetch(url, options);
+                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                        return await res.json();
+                    } catch (err) {
+                        if (i === retries - 1) throw err;
+                        await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                    }
+                }
+            };
+
+            const handleSend = async () => {
+                if (!input.trim() || isLoading) return;
+                
+                const userMsg = input;
+                setInput('');
+                setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
+                setIsLoading(true);
+
+                const systemInstruction = "You are a professional AI assistant representing Md. Rezaul Karim, a Sub-Assistant Engineer (Civil) at Dhaka WASA (Savar-Keraniganj Wellfield Plant). Your job is to answer queries related to civil engineering, water infrastructure, his expertise, and his portfolio. Be polite, formal, and concise. Do not answer completely unrelated questions.";
+                
+                // Format history for Gemini
+                const chatHistory = messages.map(m => ({
+                    role: m.role,
+                    parts: [{ text: m.text }]
+                }));
+                chatHistory.push({ role: 'user', parts: [{ text: userMsg }] });
+
+                try {
+                    const data = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            contents: chatHistory,
+                            systemInstruction: { parts: [{ text: systemInstruction }] }
+                        })
+                    });
+
+                    if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                        setMessages(prev => [...prev, { role: 'model', text: data.candidates[0].content.parts[0].text }]);
+                    } else {
+                         setMessages(prev => [...prev, { role: 'model', text: "I encountered an error processing your request." }]);
+                    }
+                } catch (error) {
+                    setMessages(prev => [...prev, { role: 'model', text: "Service temporarily unavailable. Please try again later." }]);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+
+            return (
+                <div className="fixed bottom-6 right-6 z-50">
+                    {!isOpen && (
+                        <button 
+                            onClick={() => setIsOpen(true)} 
+                            className="bg-cyan-600 hover:bg-cyan-500 text-white p-4 rounded-full shadow-2xl shadow-cyan-500/40 transition-transform hover:scale-110 flex items-center justify-center group"
+                        >
+                            <Icons.MessageCircle className="w-7 h-7" />
+                            <span className="absolute right-full mr-3 bg-slate-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">Ask AI Assistant</span>
+                        </button>
+                    )}
+
+                    {isOpen && (
+                        <div className="w-80 sm:w-96 h-[28rem] bg-white border border-slate-200 rounded-2xl flex flex-col shadow-2xl overflow-hidden animate-[slideUp_0.3s_ease-out]">
+                            {/* Chat Header */}
+                            <div className="bg-slate-900 p-4 flex justify-between items-center">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-8 h-8 bg-cyan-500/20 rounded-full flex items-center justify-center">
+                                        <Icons.Sparkles className="w-4 h-4 text-cyan-400" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-white text-sm">Infrastructure AI</h4>
+                                        <p className="text-[10px] text-cyan-400 flex items-center gap-1">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Online
+                                        </p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setIsOpen(false)} className="text-slate-400 hover:text-white transition-colors">
+                                    <Icons.X className="w-5 h-5" />
+                                </button>
+                            </div>
+
+                            {/* Chat Messages */}
+                            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50">
+                                {messages.map((msg, idx) => (
+                                    <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                        <div className={`max-w-[85%] p-3 text-sm rounded-2xl shadow-sm ${
+                                            msg.role === 'user' 
+                                            ? 'bg-blue-600 text-white rounded-br-sm' 
+                                            : 'bg-white border border-slate-200 text-slate-700 rounded-bl-sm'
+                                        }`}>
+                                            {/* Render simple markdown bolding for AI responses */}
+                                            {msg.text.split('**').map((part, i) => i % 2 === 1 ? <strong key={i}>{part}</strong> : part)}
+                                        </div>
+                                    </div>
+                                ))}
+                                {isLoading && (
+                                    <div className="flex justify-start">
+                                        <div className="max-w-[85%] p-4 text-sm rounded-2xl bg-white border border-slate-200 text-slate-500 rounded-bl-sm flex gap-1">
+                                            <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce"></span>
+                                            <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></span>
+                                            <span className="w-2 h-2 bg-slate-300 rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></span>
+                                        </div>
+                                    </div>
+                                )}
+                                <div ref={messagesEndRef} />
+                            </div>
+
+                            {/* Chat Input */}
+                            <div className="p-3 bg-white border-t border-slate-100">
+                                <div className="flex items-center gap-2 bg-slate-100 rounded-xl p-1 px-2 border border-slate-200 focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-100 transition-all">
+                                    <input 
+                                        type="text"
+                                        value={input}
+                                        onChange={(e) => setInput(e.target.value)}
+                                        onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                                        placeholder="Ask about civil engineering..."
+                                        className="flex-1 bg-transparent border-none focus:outline-none text-sm px-2 py-2 text-slate-700 placeholder-slate-400"
+                                        disabled={isLoading}
+                                    />
+                                    <button 
+                                        onClick={handleSend}
+                                        disabled={!input.trim() || isLoading}
+                                        className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white p-2 rounded-lg transition-colors"
+                                    >
+                                        <Icons.Send className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-slate-950 py-8 border-t border-slate-800">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm">
+                    <div className="flex items-center space-x-2 mb-4 md:mb-0">
+                        <Icons.Droplets className="h-5 w-5 text-cyan-600" />
+                        <span className="font-semibold text-slate-300">Md. Rezaul Karim (Rajib)</span>
+                    </div>
+                    <div className="flex flex-col items-center md:items-end mt-4 md:mt-0 text-center md:text-right">
+                        <p>© {new Date().getFullYear()} Md. Rezaul Karim. All rights reserved.</p>
+                        <p className="mt-2 text-xs text-slate-500">
+                            Digital Architecture by <a href="https://nexus-portfolio-nine.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-500 hover:text-white font-bold transition-colors">SAZID HOSSAIN</a>
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        );
+
         function App() {
             return (
                 <div className="min-h-screen bg-slate-50 font-sans">
+                    <Navbar />
                     <Hero />
                     <Timeline />
+                    <Expertise />
+                    <Contact />
+                    <AIAssistant />
+                    <Footer />
                 </div>
             );
         }
@@ -116,5 +574,16 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+
+    <style>
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
 </body>
 </html>
