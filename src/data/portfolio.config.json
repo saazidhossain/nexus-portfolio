@@ -81,6 +81,16 @@
       "url": "/projects/vabuuk"
     }
   ],
+  {
+  "id": "mr-karim-portfolio",
+  "title": "M.R. Karim Digital Identity",
+  "role": "// UX ARCHITECT",
+  "desc": "A high-trust, responsive digital portfolio engineered for a Dhaka WASA Official. Features custom glassmorphism, chronological UI timelines, and conversion-optimized form architecture.",
+  "tags": ["UI/UX Design", "React", "Tailwind CSS"],
+  "image": "/images/rezaul-portfolio.png", 
+  "demoLink": "/mr-karim.html",
+  "span": "col-span-1 md:col-span-2"
+}
   "socials": [
     { "url": "https://github.com/saazidhossain", "icon": "fa-github" },
     { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
@@ -88,3 +98,4 @@
     { "url": "#", "icon": "fa-linkedin" }
   ]
 }
+
