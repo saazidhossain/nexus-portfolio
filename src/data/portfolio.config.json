@@ -1,102 +1,46 @@
 {
-  "meta": {
-    "version": "NEXUS_v6.0_ULTIMATE",
-    "last_synced": "2026-02-24"
-  },
   "identity": {
     "name": "Sazid Hossain",
-    "role": "Creative Technologist & Web Strategist",
-    "philosophy": "Have a Cherish and Have it.",
-    "avatar_url": "/profile.jpg",
-    "location": "Bangladesh",
-    "availability": "API: ACTIVE"
+    "role": "Creative Technologist",
+    "bio": "Building sustainable tech solutions with zero budget.",
+    "email": "contact@saazidhossain.com",
+    "status": "Open for Projects",
+    "image": "/profile.jpg"
   },
-  "nexus_terminal": {
-    "efficiency": 98,
-    "storage_drive": "OneDrive (1TB) Linked"
-  },
-  
-  "//_NEW_MODULES": "BELOW_THIS_LINE",
-
-  "current_focus": {
-    "status": "Building Dokan OS Beta",
-    "battery": "85%",
-    "location": "Savar, Dhaka (Remote)",
-    "music": "Lofi Hip Hop Radio"
-  },
-  "tech_stack": [
-    { "name": "Astro", "icon": "fa-space-shuttle", "color": "text-orange-500" },
-    { "name": "Tailwind", "icon": "fa-wind", "color": "text-cyan-400" },
-    { "name": "React", "icon": "fa-react", "color": "text-blue-500" },
-    { "name": "Node.js", "icon": "fa-node", "color": "text-green-500" },
-    { "name": "Figma", "icon": "fa-figma", "color": "text-pink-500" },
-    { "name": "GitHub", "icon": "fa-github", "color": "text-white" }
-  ],
-  "micro_logs": [
-    { "date": "2026-02-24", "type": "SYSTEM", "content": "Injected M.R. Karim Digital Identity into Nexus Core." },
-    { "date": "2026-01-20", "type": "SYSTEM", "content": "Deployed Nexus Portfolio v5.0 with Digital Garden integration." },
-    { "date": "2026-01-18", "type": "READING", "content": "Finished 'Atomic Habits'. Implementing 1% improvement rule in code architecture." },
-    { "date": "2026-01-15", "type": "THOUGHT", "content": "Minimalism isn't about having less, it's about making room for what matters." }
-  ],
-  "cyber_dictionary": [
-    { "term": "Bug", "def": "সিস্টেমের অবাঞ্ছিত ডিজিটাল অতিথি।" },
-    { "term": "Deploy", "def": "লোকাল পিসি থেকে কোডকে ডিজিটাল আকাশে (Cloud) ভাসিয়ে দেওয়া।" },
-    { "term": "Freelancing", "def": "নিজেই নিজের বস হওয়ার শান্তিময় বিড়ম্বনা।" },
-    { "term": "Deadline", "def": "প্রোডাক্টিভিটি বাড়ানোর একমাত্র জাদুকরী সময়সীমা।" }
-  ],
-
-  "//_EXISTING_DATA": "BELOW_THIS_LINE",
-
   "projects": [
     {
       "id": "mr-karim",
       "title": "M.R. Karim Digital Identity",
-      "role": "UX Architect",
-      "stack": ["React", "Tailwind CSS", "UI/UX"],
-      "description": "A high-trust, responsive digital portfolio engineered for a Dhaka WASA Official. Features custom glassmorphism and chronological UI timelines.",
-      "content": "Full case study content here...",
+      "desc": "A high-trust, responsive digital portfolio engineered for a Dhaka WASA Official. Features custom glassmorphism and chronological UI timelines.",
+      "tags": ["UI/UX Design", "React", "Zero-Build"],
       "image": "/rezaul-portfolio.png",
-      "accent": "cyan-500",
-      "url": "/mr-karim.html"
+      "span": "col-span-1 md:col-span-2",
+      "demo_url": "/mr-karim.html",
+      "case_study_url": "/Karim_Portfolio_UX_Case_Study.pdf"
     },
     {
-      "id": "ju-45",
+      "id": "ju-rag-45",
       "title": "Shikkha Somaponi Utshob 45",
-      "role": "Lead Strategist",
-      "stack": ["Branding", "Logistics", "Digital Portal"],
-      "description": "Orchestrated branding and digital infrastructure for 2,000+ students at Jahangirnagar University.",
-      "content": "Full case study content here...",
+      "desc": "Lead Strategist for JU's 45th Batch Rag Day.",
+      "tags": ["Brand Strategy", "Event Tech"],
       "image": "/ju-rag.jpg",
-      "accent": "gold-500",
-      "url": "/projects/ju-45"
+      "span": "col-span-1 md:col-span-1"
     },
     {
       "id": "dokan-os",
       "title": "Dokan OS",
-      "role": "Product Architect",
-      "stack": ["F-Commerce", "Banglish AI", "WhatsApp API"],
-      "description": "Retail automation engine featuring a localized AI sales bot and inventory management.",
-      "content": "Full case study content here...",
+      "desc": "Micro-SaaS for local retail inventory with Banglish AI.",
+      "tags": ["SaaS", "Automation"],
       "image": "/dokan.jpg",
-      "accent": "indigo-500",
-      "url": "/projects/dokan-os"
+      "span": "col-span-1 md:col-span-1"
     },
     {
-      "id": "vabuuk",
+      "id": "vabuuk-studio",
       "title": "Vabuuk Creative Studio",
-      "role": "Content Engineer",
-      "stack": ["NotebookLM", "Philosophy", "Cyber-Noir"],
-      "description": "A digital sage tool fused with Google NotebookLM for philosophy-driven content engineering.",
-      "content": "Full case study content here...",
+      "desc": "A digital sage tool fused with NotebookLM for philosophy-driven content.",
+      "tags": ["AI Prompting", "System Prompt"],
       "image": "/vabuuk.jpg",
-      "accent": "cyan-500",
-      "url": "/projects/vabuuk"
+      "span": "col-span-1 md:col-span-2"
     }
-  ],
-  "socials": [
-    { "url": "https://github.com/saazidhossain", "icon": "fa-github" },
-    { "url": "https://twitter.com/saazidhossain", "icon": "fa-twitter" },
-    { "url": "https://www.behance.net/saazidhossain", "icon": "fa-behance" },
-    { "url": "#", "icon": "fa-linkedin" }
   ]
 }
