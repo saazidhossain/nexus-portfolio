@@ -33,7 +33,8 @@
       "url": "https://project-slug.demo.intelwebhost.com",
       "assets": [
         "https://cdn.intelwebhost.com/project-slug-screenshot-1.jpg",
-        "https://cdn.intelwebhost.com/project-slug-demo.mp4"
+        "https://cdn.intelwebhost.com/project-slug-demo.mp4",
+        "https://cdn intelwebhost.com/project-slug-demo.pdf"
       ],
       "og": {
         "title": "PROJECT TITLE — Sazid Hossain",
