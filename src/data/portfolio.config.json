@@ -16,7 +16,7 @@
       "image": "/rezaul-portfolio.png",
       "span": "col-span-1 md:col-span-2",
       "demo_url": "https://saazidhossain.github.io/Mr_Rezaul_Portfolio/",
-      "case_study_url": "/Karim_Portfolio_UX_Case_Study.pdf"
+      "pdf": "/Karim_Portfolio_UX_Case_Study.pdf"
     },
     {
       "id": "ju-rag-45",
@@ -25,6 +25,7 @@
       "tags": ["Brand Strategy", "Event Tech"],
       "image": "/ju-rag.jpg",
       "span": "col-span-1 md:col-span-1"
+      "url": "www.ju45th.com"
     },
     {
       "id": "dokan-os",
@@ -44,4 +45,5 @@
     }
   ]
 }
+
 
