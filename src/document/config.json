@@ -8,7 +8,7 @@
   "identity": {
     "name": "Sazid Hossain",
     "handle": "@saazidhossain",
-    "email": "contact@sazid.com"
+    "email": "saazidhossain@gmail.com"
   },
   "navigation": [
     { "label": "Home", "path": "/" },
@@ -18,6 +18,7 @@
   "socials": [
     { "platform": "GitHub", "url": "https://github.com/saazidhossain" },
     { "platform": "LinkedIn", "url": "https://linkedin.com/in/saazidhossain" }
+    { "platform": "Behance" , "url": "https://behance.com/saazidhossain" }
   ],
   "projects": [
     {
@@ -29,7 +30,7 @@
       "tags": ["web", "astro", "design"],
       "pubDate": "2026-01-26T11:00:00Z",
       "cover_image": "https://cdn.intelwebhost.com/project-slug-cover.jpg",
-      "demo_url": "https://project-slug.demo.intelwebhost.com",
+      "url": "https://project-slug.demo.intelwebhost.com",
       "assets": [
         "https://cdn.intelwebhost.com/project-slug-screenshot-1.jpg",
         "https://cdn.intelwebhost.com/project-slug-demo.mp4"
